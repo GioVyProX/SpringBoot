@@ -14,4 +14,6 @@ public class NewClass {
     public ResponseEntity <?> index() {
         return ResponseEntity.ok("OK");
     }
+
+
 }
