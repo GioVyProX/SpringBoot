@@ -12,5 +12,11 @@ public class HelloController {
 		return "Ciao caro fai 10 diesel";
 	}
 
+	@GetMapping("/greeting")
+	public ResponseEntity <?> ex2(){
+
+		return ResponseEntity.ok("Good Afternoon!");
+	}
+
 
 }
