@@ -3,10 +3,10 @@ package com.example.springboot;
 public class Meal {
 
     public String description;
-    public String price;
+    public double price;
     public String name;
 
-    public Meal(String description, String price, String name) {
+    public Meal(String description, double price, String name) {
         this.description = description;
         this.price = price;
         this.name = name;
@@ -20,11 +20,11 @@ public class Meal {
         this.description = description;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

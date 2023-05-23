@@ -14,9 +14,9 @@ import java.util.List;
 public class HelloController {
 
 private List<Meal> meals = Arrays.asList(
-		new Meal("A Meal made by the chef", "19.99","Chef's Special"),
-		new Meal("Chicken burger bacon", "9.99","Chicken burger"),
-		new Meal("Hamburgher with bacon and fries", "10.99","Hamburgher")
+		new Meal("A Meal made by the chef", 19.99,"Chef's Special"),
+		new Meal("Chicken burger bacon", 9.99,"Chicken burger"),
+		new Meal("Hamburgher with bacon and fries", 10.99,"Hamburgher")
 
 
 );
