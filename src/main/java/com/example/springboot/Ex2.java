@@ -2,10 +2,12 @@ package com.example.springboot;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class Ex2 {
@@ -18,6 +20,23 @@ public class Ex2 {
 @GetMapping("/meals")
     public List<Meal> index (){
         return meals;
+    }
+
+
+    @GetMapping("/meals/{name}")
+    public Meal mealByName (@PathVariable ("name") String name){
+
+        for (Meal meal : meals) {
+            if (Objects.equals(meal.name, name)) {
+
+                return meal;
+
+            }
+            return null;
+        }
+
+
+        return null;
     }
 
 }
