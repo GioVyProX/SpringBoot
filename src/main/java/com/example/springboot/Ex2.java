@@ -24,14 +24,13 @@ public class Ex2 {
     }
 
 
-    @GetMapping("/meals/{name}")
-    public Meal mealByName(@PathVariable("name") String name) {
+    @GetMapping("/meals/name")
+    public Meal mealByName(@RequestParam("name") String name) {
 
         for (Meal meal : meals) {
             if (Objects.equals(meal.name, name)) {
                 return meal;
             }
-            return null;
         }
         return null;
     }
