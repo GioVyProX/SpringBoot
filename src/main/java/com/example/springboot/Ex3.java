@@ -33,4 +33,10 @@ public class Ex3 {
         this.meals.add(meal);
         return ResponseEntity.ok("Meal updated!");
     }
+
+    @DeleteMapping (value = "/meal/price/{price}")
+    public ResponseEntity<String> deleteMeal (@PathVariable double price){
+        this.meals.removeIf(meal -> meal.price > price);
+        return ResponseEntity.ok("Updated!");
+    }
 }
