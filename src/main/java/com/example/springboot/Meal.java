@@ -7,9 +7,9 @@ public class Meal {
     public String name;
 
     public Meal(String name, double price, String description) {
-        this.description = description;
-        this.price = price;
         this.name = name;
+        this.price = price;
+        this.description = description;
     }
 
     public String getDescription() {
