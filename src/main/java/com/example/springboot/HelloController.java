@@ -1,9 +1,7 @@
 package com.example.springboot;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,23 +11,33 @@ import java.util.List;
 @RestController
 public class HelloController {
 
-private List<Meal> meals = Arrays.asList(
-		new Meal("A Meal made by the chef", 19.99,"Chef's Special"),
-		new Meal("Chicken burger bacon", 9.99,"Chicken burger"),
-		new Meal("Hamburgher with bacon and fries", 10.99,"Hamburgher")
+private List<Meal> meals = new ArrayList<>();
 
 
-);
-
-	@GetMapping("/")
-	public String index() {
-		return "Ciao caro fai 10 diesel";
+	@GetMapping("/get/meals")
+	public ResponseEntity<List<Meal>> getMeals() {
+		return ResponseEntity.ok(meals);
 	}
 
-	@GetMapping("/chefs-special/{dayOfTheWeekIndex}")
-	public ResponseEntity <Meal> chefsSpecial(@PathVariable("dayOfTheWeekIndex") int dayOfTheWeekIndex){
+	@PutMapping(value = "/put/meal")
+	public ResponseEntity <String> putMeal(@RequestBody Meal meal) {
+		this.meals.add(meal);
+		return ResponseEntity.ok("Meal added!");
+	}
 
-		return ResponseEntity.ok(meals.get(dayOfTheWeekIndex));
+	@DeleteMapping (value = "/delete/meal/{mealName}")
+	public ResponseEntity <String> deleteMeal(@PathVariable String mealName){
+
+		this.meals.removeIf(meal -> meal.getName().equals(mealName));
+		return ResponseEntity.ok("Meal deleted!");
+
+	}
+
+	@PostMapping (value = "/post/replace-meal")
+	public ResponseEntity<String> postMeal (@RequestBody Meal meal){
+		this.meals.removeIf(m -> m.getName().equals(meal.getName()));
+		this.meals.add(meal);
+		return ResponseEntity.ok("Meal updated");
 	}
 
 

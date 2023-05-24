@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class NewClass {
 
-
-    @GetMapping("/info")
-    public ResponseEntity <?> index() {
-        return ResponseEntity.ok("OK");
-    }
+//    @GetMapping("/info")
+//    public ResponseEntity <?> index() {
+//        return ResponseEntity.ok("OK");
+//    }
 
 
 }
