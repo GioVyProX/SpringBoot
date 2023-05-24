@@ -39,4 +39,17 @@ public class Ex3 {
         this.meals.removeIf(meal -> meal.price > price);
         return ResponseEntity.ok("Updated!");
     }
+
+    @PutMapping (value = "/meal/{name}/price")
+    public ResponseEntity <String> updateMeal (@PathVariable String name, @RequestBody Meal mealPrice){
+
+        for (Meal meal: meals) {
+            if (meal.name.equals(name)){
+                meal.setPrice(mealPrice.getPrice());
+            }
+        }
+        return ResponseEntity.ok("Meal updated");
+    }
+
+
 }
