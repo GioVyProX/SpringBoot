@@ -6,7 +6,7 @@ public class Meal {
     public double price;
     public String name;
 
-    public Meal(String description, double price, String name) {
+    public Meal(String name, double price, String description) {
         this.description = description;
         this.price = price;
         this.name = name;
