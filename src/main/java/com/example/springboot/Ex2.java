@@ -25,7 +25,7 @@ public class Ex2 {
 
 
     @GetMapping("/meals/{name}")
-    public ResponseEntity<Meal> mealByName(@PathVariable("name") String name) {
+    public ResponseEntity<?> mealByName(@PathVariable("name") String name) {
         for (Meal meal : meals) {
             if (meal.name.equals(name)) {
                 return ResponseEntity.ok(meal);
@@ -35,12 +35,12 @@ public class Ex2 {
     }
 
 
-    @GetMapping ("/meal")
-    public ResponseEntity<?> getByDescription (
-            @RequestParam ("description") String description){
+    @GetMapping("/meal")
+    public ResponseEntity<?> getByDescription(
+            @RequestParam("description") String description) {
 
-        for (Meal meal: meals) {
-            if (meal.description.contains(description)){
+        for (Meal meal : meals) {
+            if (meal.description.contains(description)) {
                 return ResponseEntity.ok(meal);
             }
         }
@@ -49,18 +49,17 @@ public class Ex2 {
     }
 
 
+    @GetMapping("/meal/price")
+    public ResponseEntity<?> getByPrice(
+            @RequestParam("max_price") double max_price,
+            @RequestParam("min_price") double min_price) {
 
-    @GetMapping ("/meal/price")
-    public ResponseEntity<?> getByPrice (
-            @RequestParam ("max_price") double max_price,
-            @RequestParam ("min_price") double min_price) {
+        for (Meal meal : meals) {
+            if (meal.price <= max_price && meal.price >= min_price) {
+                return ResponseEntity.ok(meal);
+            }
 
-        for (Meal meal: meals) {
-        if (meal.price <= max_price && meal.price >= min_price) {
-            return ResponseEntity.ok(meal);
         }
-
-        }
-    return null;
+        return null;
     }
 }

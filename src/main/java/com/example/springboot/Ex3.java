@@ -20,15 +20,16 @@ public class Ex3 {
     public ResponseEntity<List<Meal>> getMeal(){
         return ResponseEntity.ok(meals);
     }
-    @PutMapping(value = "/put/meal/ex3")
-    public ResponseEntity <String> putMeal(@RequestBody Meal meal) {
+
+
+    @PostMapping(value = "/meal")
+    public ResponseEntity <String> addMeal(@RequestBody Meal meal) {
         this.meals.add(meal);
         return ResponseEntity.ok("Meal added!");
     }
 
-    @PostMapping (value = "/meal/{name}")
-    public ResponseEntity<String> postMeal(@PathVariable String name, @RequestBody Meal meal){
-
+    @PutMapping (value = "/meal/{name}")
+    public ResponseEntity<String> updateMeal(@PathVariable String name, @RequestBody Meal meal){
         this.meals.removeIf(m -> m.name.equals(name));
         this.meals.add(meal);
         return ResponseEntity.ok("Meal updated!");
@@ -37,15 +38,15 @@ public class Ex3 {
     @DeleteMapping (value = "/meal/price/{price}")
     public ResponseEntity<String> deleteMeal (@PathVariable double price){
         this.meals.removeIf(meal -> meal.price > price);
-        return ResponseEntity.ok("Updated!");
+        return ResponseEntity.ok("Deleted!");
     }
 
     @PutMapping (value = "/meal/{name}/price")
-    public ResponseEntity <String> updateMeal (@PathVariable String name, @RequestBody Meal mealPrice){
+    public ResponseEntity <String> updatePriceMeal(@PathVariable String name, @RequestBody double price){
 
         for (Meal meal: meals) {
             if (meal.name.equals(name)){
-                meal.setPrice(mealPrice.getPrice());
+                meal.setPrice(price);
             }
         }
         return ResponseEntity.ok("Meal updated");
