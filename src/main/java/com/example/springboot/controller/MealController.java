@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("api/meal/")
 public class MealController {
 
     private MealService mealService;
@@ -27,12 +28,12 @@ public class MealController {
         return ResponseEntity.ok(restaurantConfig);
     }
 
-    @GetMapping("/get/meals")
+    @GetMapping("get")
     public ResponseEntity<List<Meal>> getMeals() {
         return ResponseEntity.ok(mealService.getMeals());
     }
 
-    @PutMapping(value = "/put/meal")
+    @PutMapping(value = "put")
     public ResponseEntity <String> putMeal(@RequestBody Meal meal) {
         try {
             mealService.addMeal(meal);
@@ -42,7 +43,7 @@ public class MealController {
         }
     }
 
-    @DeleteMapping(value = "/delete/meal/{mealName}")
+    @DeleteMapping(value = "delete/{mealName}")
     public ResponseEntity <String> deleteMeal(@PathVariable String mealName){
 
         mealService.deleteMeal(mealName);
