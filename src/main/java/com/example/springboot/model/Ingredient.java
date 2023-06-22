@@ -44,7 +44,7 @@ public class Ingredient {
         return isVegetarian;
     }
 
-    public void setisVegetarian(boolean vegetarian) {
+    public void setIsVegetarian(boolean vegetarian) {
         isVegetarian = vegetarian;
     }
 
@@ -52,7 +52,7 @@ public class Ingredient {
         return isVegan;
     }
 
-    public void setisVegan(boolean vegan) {
+    public void setIsVegan(boolean vegan) {
         isVegan = vegan;
     }
 
@@ -60,7 +60,7 @@ public class Ingredient {
         return isGlutenFree;
     }
 
-    public void setisGlutenFree(boolean glutenFree) {
+    public void setIsGlutenFree(boolean glutenFree) {
         isGlutenFree = glutenFree;
     }
 
@@ -68,7 +68,7 @@ public class Ingredient {
         return isLactoseFree;
     }
 
-    public void setisLactoseFree(boolean lactoseFree) {
+    public void setIsLactoseFree(boolean lactoseFree) {
         isLactoseFree = lactoseFree;
     }
 
