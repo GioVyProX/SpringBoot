@@ -16,7 +16,8 @@ import java.util.List;
 public class MealService {
 
     private MealRepository mealRepository;
-    private Double MIN_SUMMER_TEMP = 2.0;
+    private Double MIN_SUMMER_TEMP = 20.0;
+    private Double MAX_WINTER_TEMP = 40.0;
 
     @Autowired
     public MealService(MealRepository mealRepository) {
@@ -48,20 +49,32 @@ public class MealService {
         return mealRepository.findByName("Veggie Burger");
 
 //        return mealRepository.findByPriceGreaterThanAndName(9.99, "Hamburger");
-
+//
 //        System.out.println(mealRepository.findByDescription("Descrizione Piatto"));
 //        System.out.println(mealRepository.findByDescriptionAndPriceLowerThan("Descrizione Piatto", 9.99));
 //        System.out.println(mealRepository.findByPriceGreaterThan(19.99));
 //        System.out.println(mealRepository.findByPriceLowerThanAndGreaterThan(25.99, 9.99));
 
     }
+    private Double currentTemperatureInCentigrade = getTemperatureInDegrees();
+
+
+    public List<Meal> getWinterMeals (){
+
+        if (currentTemperatureInCentigrade > MAX_WINTER_TEMP) return new ArrayList<>();
+
+
+            return mealRepository.findByIsWinterMeal(true);
+
+    }
+
+
 
     public List<Meal> getSummerMeals() {
 
 
-        Double currentTemperatureInCentigrade = getTemperatureInDegrees();
 
-        if (currentTemperatureInCentigrade > MIN_SUMMER_TEMP) return new ArrayList<>();
+        if (currentTemperatureInCentigrade < MIN_SUMMER_TEMP) return new ArrayList<>();
 
 
         return mealRepository.findByIsSummerMeal(true);

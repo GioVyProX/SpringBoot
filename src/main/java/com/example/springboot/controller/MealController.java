@@ -70,4 +70,10 @@ public class MealController {
 
         return ResponseEntity.ok(mealService.getSummerMeals());
     }
+
+    @GetMapping (value = "winter-meals")
+    public ResponseEntity<List<Meal>> getWinterMeals (){
+        return ResponseEntity.ok(mealService.getWinterMeals());
+    }
+
 }

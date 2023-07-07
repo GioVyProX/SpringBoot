@@ -20,7 +20,9 @@ public interface MealRepository extends JpaRepository <Meal, Long>{
 
     List<Meal> findByName(String name);
     List<Meal> findByPriceGreaterThanAndName(double price, String name);
-    List<Meal> findByIsSummerMeal(boolean isSummerMeal);
+    List<Meal> findByIsSummerMeal(Boolean isSummerMeal);
+
+    List<Meal> findByIsWinterMeal(Boolean isWinterMeal);
 
 
 }

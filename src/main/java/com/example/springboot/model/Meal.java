@@ -21,18 +21,30 @@ public class Meal {
 
     private Boolean isSummerMeal;
 
-    public Meal(Long id, String name, double price, String description, Boolean isSummerMeal) {
+    private Boolean isWinterMeal;
+
+    public Meal(Long id, String name, double price, String description, Boolean isSummerMeal, Boolean isWinterMeal) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.isSummerMeal = isSummerMeal;
+        this.isWinterMeal = isWinterMeal;
     }
 
     public Meal () {
     }
-    public Boolean getIsSummerMeal() {
+
+    public Boolean getSummerMeal() {
         return isSummerMeal;
+    }
+
+    public Boolean getWinterMeal() {
+        return isWinterMeal;
+    }
+
+    public void setWinterMeal(Boolean winterMeal) {
+        isWinterMeal = winterMeal;
     }
 
     public void setSummerMeal(Boolean summerMeal) {
@@ -86,8 +98,6 @@ public class Meal {
                 ", \ningredients = " + ingredients +
                 ", \nname = '" + name + '\'' +
                 ", \nprice = " + price +
-                ", \ndescription = ' " + description + '\'' +
-                ", \nisSummerMeal = " + isSummerMeal +
                 '}'+ "\n\n";
     }
 }
