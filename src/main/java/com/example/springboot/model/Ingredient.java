@@ -8,6 +8,10 @@ public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @JsonBackReference
+    @ManyToOne
+    private Meal meal;
     private String name;
     private boolean isVegetarian;
     private boolean isVegan;
@@ -72,5 +76,11 @@ public class Ingredient {
         isLactoseFree = lactoseFree;
     }
 
+    public Meal getMeal() {
+        return meal;
+    }
 
+    public void setMeal(Meal meal) {
+        this.meal = meal;
+    }
 }

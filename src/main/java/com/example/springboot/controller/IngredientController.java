@@ -19,9 +19,9 @@ public class IngredientController {
     }
 
     @PostMapping (value = "insert")
-    public ResponseEntity<?> insertIngredient (@RequestBody Ingredient ingredient){
+    public ResponseEntity<String> insertIngredient (@RequestBody Ingredient ingredient){
         ingredientService.addIngredient(ingredient);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Ingredient added!");
     }
 
     @DeleteMapping (value = "delete/{id}")

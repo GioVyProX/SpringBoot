@@ -5,6 +5,7 @@ import com.example.springboot.model.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -42,6 +43,8 @@ public class IngredientService {
         if (ingredientsFromDB.isEmpty()) throw new NoSuchElementException("There is nothing to see :3");
         return ingredientsFromDB;
     }
+
+
 
 
 }
